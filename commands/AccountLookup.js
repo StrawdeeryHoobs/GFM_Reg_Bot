@@ -1,11 +1,3 @@
-try{
-    
-    DiscordToken = fsLibrary.readFileSync('DiscordToken.txt', 'utf8');
-
-}catch(error){
-
-    console.log("No file exists for 'DiscordToken.txt'");
-}
 
 let orderNumber = "GFM2022-5CC000H";
 
