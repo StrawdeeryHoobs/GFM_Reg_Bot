@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { request } = require('http');
 const fsLibrary = require('fs');
-const {Client, Collection, Intents, Message, Interaction } = require('discord.js');
+const {Message} = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
