@@ -1,10 +1,8 @@
 const fsLibrary = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-//const { clientId, guildId } = require('./config.json');
+const { clientId, guildId, token } = require('./config.json');
 
-let guildId = '915295538373599304';
-let clientId = '915077946648182804'
 try{
     
     DiscordToken = fsLibrary.readFileSync('DiscordToken.txt', 'utf8');
@@ -22,7 +20,7 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9' }).setToken(DiscordToken);
+const rest = new REST({ version: '9' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))

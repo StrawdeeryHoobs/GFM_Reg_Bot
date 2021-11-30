@@ -3,17 +3,7 @@ const fsLibrary = require('fs');
 const {Client, Collection, Intents, Message, Interaction } = require('discord.js');
 const hosts = ['google.com', 'discordapp.com']
 
-let DiscordToken;
-
-try{
-    
-    DiscordToken = fsLibrary.readFileSync('DiscordToken.txt', 'utf8');
-
-}catch(error){
-
-    console.log("No file exists for 'DiscordToken.txt'");
-}
-
+const { clientId, guildId, token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -44,4 +34,4 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.login(DiscordToken);
+client.login(token);
