@@ -1,9 +1,8 @@
 const { request } = require('http');
 const fsLibrary = require('fs');
 const {Client, Collection, Intents, Message, Interaction } = require('discord.js');
-const hosts = ['google.com', 'discordapp.com']
 
-const { clientId, guildId, token } = require('./config.json');
+const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
