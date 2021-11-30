@@ -3,15 +3,6 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { clientId, guildId, token } = require('./config.json');
 
-try{
-    
-    DiscordToken = fsLibrary.readFileSync('DiscordToken.txt', 'utf8');
-
-}catch(error){
-
-    console.log("No file exists for 'DiscordToken.txt'");
-}
-
 const commands = [];
 const commandFiles = fsLibrary.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
