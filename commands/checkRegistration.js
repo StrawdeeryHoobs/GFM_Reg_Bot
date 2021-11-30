@@ -13,7 +13,10 @@ module.exports = {
             
 	async execute(interaction) {
 		
-        let orderNumber = option;
+        const args = Message.content.slice(prefix.length).trim();
+        const command = args.shift();
+
+        let orderNumber = command;
 
         fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString){
 
