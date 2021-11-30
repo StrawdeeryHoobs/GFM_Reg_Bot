@@ -5,7 +5,7 @@ const {Message} = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('checkregistration')
-		.setDescription('Registered for Gateway Furmeet? Use this command with your confirmation code to get assigned to the right role!')
+		.setDescription('Registered for GFM? Use this command with your confirmation code to get assigned to the right role!')
         .addStringOption(option =>
             option.setName('input')
             .setDescription('confirmation ID from email')
@@ -23,7 +23,7 @@ module.exports = {
         if (txtString.includes(orderNumber)){
     
             console.log("Order number already used.");
-            await interaction.reply("This confirmation number has already been used. If this is in error, please reach out to the GFM team.")
+            interaction.reply("This confirmation number has already been used. If this is in error, please reach out to the GFM team.")
 
         } else {
 
@@ -88,7 +88,7 @@ module.exports = {
                                 let member = Message.member;
                                 let SuperSponsorRole = Message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor");
                                 member.roles.add(SuperSponsorRole).catch(console.error);
-                                await interaction.reply("Thank you for registering as a SuperSponsor! You should now see your role assigned to yourself.")
+                                interaction.reply("Thank you for registering as a SuperSponsor! You should now see your role assigned to yourself.")
 
                             } else{ //confirm they are a Sponsor
 
@@ -96,7 +96,7 @@ module.exports = {
                                 let SponsorRole = Message.guild.roles.cache.find(role => role.name === "2022 Sponsor");                           
                                 let member = Message.member;
                                 member.roles.add(SponsorRole).catch(console.error);
-                                await interaction.reply("Thank you for registering as a Sponsor! You should now see your role assigned to yourself.")
+                                interaction.reply("Thank you for registering as a Sponsor! You should now see your role assigned to yourself.")
 
                             };
                     } else {
@@ -105,13 +105,13 @@ module.exports = {
                             let AttendingRole = Message.guild.roles.cache.find(role => role.name === "2022 Attending");
                             let member = Message.member;
                             member.roles.add(AttendingRole).catch(console.error);
-                            await interaction.reply("Thank you for registering for GFM! You should now see your role assigned to yourself.")
+                            interaction.reply("Thank you for registering for GFM! You should now see your role assigned to yourself.")
 
                         };
                 } else {
 
                     console.log("Not a valid orderNumber");
-                    await interaction.reply("We can't seem to find this confirmation number. Please make sure there are no extra spaces") 
+                    interaction.reply("We can't seem to find this confirmation number. Please make sure there are no extra spaces") 
 
                 };
                 
