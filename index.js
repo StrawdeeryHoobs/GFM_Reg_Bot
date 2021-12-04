@@ -1,6 +1,7 @@
 const fsLibrary = require('fs');
 const {Client, Intents, Message,} = require('discord.js');
 const { token } = require('./config.json');
+const prefix = ("!")
 
 const myIntents = new Intents();
 myIntents.add (Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS)
