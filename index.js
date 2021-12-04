@@ -1,5 +1,5 @@
 const fsLibrary = require('fs');
-const {Client, Collection,  Intents,} = require('discord.js');
+const {Client, Intents,} = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -11,11 +11,11 @@ client.once('ready', () => {
 client.on("message", (msg) => {
 
 	if(msg.content.startsWith("!connect")) {
-		console.log("We have a live one!")
+		console.log("We have a live one!");
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
 		const orderNumber = args.shift().toUpperCase();
 
-		fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString){
+		fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString) {
 
 			if (error) throw error;
 			console.log(txtString);
