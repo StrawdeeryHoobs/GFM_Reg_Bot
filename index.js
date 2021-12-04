@@ -1,5 +1,5 @@
 const fsLibrary = require('fs');
-const {Client, Collection, Intents,} = require('discord.js');
+const {Client, Collection,  Intents,} = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -16,7 +16,7 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on("message", msg => {
+client.on("message", (msg) => {
 
 	if(msg.content.startsWith("!connect")) {
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
