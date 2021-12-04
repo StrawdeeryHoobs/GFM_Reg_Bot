@@ -1,6 +1,6 @@
 const fsLibrary = require('fs');
 const {Client, Intents} = require('discord.js');
-const { token } = require('./config.json');
+const { token, apiKey } = require('./config.json');
 const prefix = ("!connect ")
 
 const myIntents = new Intents();
@@ -53,7 +53,7 @@ client.on('messageCreate', message => {
 								port: '443',
 								path: '/v2/public/search/registrants?product=regfox.com&orderNumber='+orderNumber+'&pretty=true',
 								method: 'GET',
-								headers: {"apiKey":"b3ded12f3f654113a2b0fb3438cd42f2"}
+								headers: {"apiKey":apiKey}
 							};
 							httpOptions.headers['User-Agent'] = 'node ' + process.version;
 					
