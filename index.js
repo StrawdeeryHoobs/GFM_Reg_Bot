@@ -4,7 +4,7 @@ const { token } = require('./config.json');
 const prefix = ("!connect ")
 
 const myIntents = new Intents();
-myIntents.add (Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS)
+myIntents.add (Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS)
 
 const client = new Client({ intents: myIntents });
 
