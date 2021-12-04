@@ -8,7 +8,7 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on("message", msg => {
+client.on('message', msg => {
 
 	if(msg.content.startsWith("!connect")) {
 		console.log("We have a live one!");
