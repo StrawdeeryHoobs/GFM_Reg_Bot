@@ -93,23 +93,23 @@ client.on('messageCreate', message => {
 									if (body.includes("SuperSponsor")){ //Confirm they are a SuperSponsor
 										
 										console.log("Theyre a SuperSponsor!");
-										let member = Message.member;
-										let SuperSponsorRole = Message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor");
+										let member = message.member;
+										let SuperSponsorRole = message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor");
 										member.roles.add(SuperSponsorRole).catch(console.error);
 		
 									} else{ //confirm they are a Sponsor
 		
 										console.log("They're a Sponsor!");
-										let SponsorRole = Message.guild.roles.cache.find(role => role.name === "2022 Sponsor");                           
-										let member = Message.member;
+										let SponsorRole = message.guild.roles.cache.find.find(role => role.name === "2022 Sponsor");                           
+										let member = message.member;
 										member.roles.add(SponsorRole).catch(console.error);
 		
 									};
 							} else {
 		
 									console.log("They're attending!");
-									let AttendingRole = Message.guild.roles.cache.find(role => role.name === "2022 Attending");
-									let member = Message.member;
+									let AttendingRole = message.guild.roles.cache.find.find(role => role.name === "2022 Attending");
+									let member = message.member;
 									member.roles.add(AttendingRole).catch(console.error);
 		
 								};
