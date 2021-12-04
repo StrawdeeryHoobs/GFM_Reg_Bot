@@ -1,0 +1,6 @@
+{
+    "clientID": "Discord App ID",
+    "guildID": "Discord Guild ID",
+    "token": "Discord Bot Token",
+    "apiKey" : "WebConnex API Key"
+}
