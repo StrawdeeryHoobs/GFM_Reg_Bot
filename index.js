@@ -30,6 +30,7 @@ client.on("message", msg => {
 			if (txtString.includes(orderNumber)){
 			
 				console.log("Order number already used.");
+				msg.reply("This order number has already been used.")
 				//Code to send message to user letting them know the registration code has already been used
 		
 			} else {
