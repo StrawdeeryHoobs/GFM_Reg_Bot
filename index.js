@@ -1,8 +1,8 @@
 const fsLibrary = require('fs');
-const {Client, Intents, Message} = require('discord.js');
+const {Client, Intents, Message,} = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "ROLES"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -12,7 +12,7 @@ client.on('messageCreate', async Message => {
 
 	if (Message.author.bot) return;
 
-	if (Message.content.startsWith("!connect")) {
+	if(msg.content.startsWith("!connect")) {
 		console.log("We have a live one!");
 		msg.reply("Looking up your details...")
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
