@@ -12,7 +12,7 @@ client.on('messageCreate', async Message => {
 
 	if (Message.author.bot) return;
 
-	if(msg.content.startsWith("!connect")) {
+	if(Message.content.startsWith("!connect")) {
 		console.log("We have a live one!");
 		msg.reply("Looking up your details...")
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
