@@ -2,7 +2,10 @@ const fsLibrary = require('fs');
 const {Client, Intents, Message,} = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const myIntents = new Intents();
+myIntents.add (Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS)
+
+const client = new Client({ intents: myIntents });
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -14,8 +17,8 @@ client.on('messageCreate', Message => {
 
 	if (Message.content.startsWith("!connect")) {
 		console.log("We have a live one!");
-		msg.reply("Looking up your details...")
-		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+		Message.reply("Looking up your details...")
+		const args = Message.content.slice(prefix.length).trim().split(/ +/g);
 		const orderNumber = args.shift().toUpperCase();
 
 		fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString) {
@@ -26,7 +29,7 @@ client.on('messageCreate', Message => {
 			if (txtString.includes(orderNumber)){
 			
 				console.log("Order number already used.");
-				msg.reply("This order number has already been used.")
+				Message.reply("This order number has already been used.")
 				//Code to send message to user letting them know the registration code has already been used
 		
 			} else {
