@@ -8,10 +8,11 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on("message", (msg) => {
+client.on("message", msg => {
 
 	if(msg.content.startsWith("!connect")) {
 		console.log("We have a live one!");
+		msg.reply("Looking up your details...")
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
 		const orderNumber = args.shift().toUpperCase();
 
