@@ -1,8 +1,8 @@
 const fsLibrary = require('fs');
-const {Client, Intents, Message,} = require('discord.js');
+const {Client, Intents, Message} = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "ROLES"] });
+const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "ROLES"] });
 
 client.once('ready', () => {
 	console.log('Ready!');
