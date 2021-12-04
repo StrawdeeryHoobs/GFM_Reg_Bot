@@ -11,14 +11,14 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on('messageCreate', Message => {
+client.on('messageCreate', message => {
 
-	if (Message.author.bot) return;
+	if (message.author.bot) return;
 
-	if (Message.content.startsWith("!connect")) {
+	if (message.content.startsWith("!connect")) {
 		console.log("We have a live one!");
-		Message.reply("Looking up your details...")
-		const args = Message.content.slice(prefix.length).trim().split(/ +/g);
+		message.reply("Looking up your details...")
+		const args = message.content.slice(prefix.length).trim().split(/ +/g);
 		const orderNumber = args.shift().toUpperCase();
 
 		fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString) {
@@ -29,7 +29,7 @@ client.on('messageCreate', Message => {
 			if (txtString.includes(orderNumber)){
 			
 				console.log("Order number already used.");
-				Message.reply("This order number has already been used.")
+				message.reply("This order number has already been used.")
 				//Code to send message to user letting them know the registration code has already been used
 		
 			} else {
