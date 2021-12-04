@@ -96,7 +96,7 @@ client.on('messageCreate', message => {
 										let member = message.member;
 										let SuperSponsorRole = message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor");
 										member.roles.add(SuperSponsorRole).catch(console.error);
-										message.reply("Thank you for registering as a SuperSponsor!")
+										message.reply("Thank you for registering as a SuperSponsor!");
 		
 									} else{ //confirm they are a Sponsor
 		
@@ -104,7 +104,7 @@ client.on('messageCreate', message => {
 										let SponsorRole = message.guild.roles.cache.find.find(role => role.name === "2022 Sponsor");                           
 										let member = message.member;
 										member.roles.add(SponsorRole).catch(console.error);
-										message.reply("Thank you for registering as a Sponsor!")
+										message.reply("Thank you for registering as a Sponsor!");
 									};
 							} else {
 		
@@ -112,12 +112,13 @@ client.on('messageCreate', message => {
 									let AttendingRole = message.guild.roles.cache.find.find(role => role.name === "2022 Attending");
 									let member = message.member;
 									member.roles.add(AttendingRole).catch(console.error);
-									message.reply("Thank you for registering for GFM!")
+									message.reply("Thank you for registering for GFM!");
 		
 								};
 						} else {
 		
 							console.log("Not a valid orderNumber");
+							message.reply("Something is not quite right. Please check your confirmation number and try again.");
 							// Code to return an error  
 		
 						};
