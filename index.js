@@ -21,7 +21,7 @@ client.on("message", (msg) => {
 	if(msg.content.startsWith("!connect")) {
 		console.log("We have a live one!")
 		const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-		const orderNumber = args.shift()
+		const orderNumber = args.shift().toUpperCase();
 
 		fsLibrary.readFile('orderList.txt', 'utf8', function(error, txtString){
 
