@@ -16,6 +16,11 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 	
 	if (message.author.bot) return; // Ignores all messages sent by the bot
 
+	if (message.content.startsWith(!ping)) {
+		console.log("Alive check!");
+		message.reply("Pong!");
+	};
+
 	if (message.content.startsWith("!connect")) { // If the new message starts with "!connect", enter the following script
 		console.log("We have a live one!"); // Indicates the start of the script in the terminal
 		message.reply("Looking up your details...") // Responds to the user that we are gathering their order details
