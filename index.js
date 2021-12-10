@@ -32,7 +32,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 			if (txtString.includes(orderNumber)){ // Checks to see if the order number has already been used		
 				console.log("Order number already used."); // Indicates that the user's order number has already been registered with the bot
 				message.reply("This order number has already been used. If you think this is an error, please reach out to the GFM Team"); // Responds to the user that the order number has already been used with the bot		
-				message.delete();
+				message.delete(); //delete user input to hide confirmation number
 			} else {		
 				(function(callback) { // All of this to the next comment is the HTTPS request to pull data from WebConnex
 					'use strict';				
@@ -93,7 +93,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 										let member = message.member; // Get user ID
 										member.roles.add(SponsorRole).catch(console.error); // Assign Sponsor role to user
 										message.reply("Thank you for registering as a Sponsor!"); // Let user know they have the Sponsor role
-										message.delete();
+										message.delete(); //delete user input to hide confirmation number
 										fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
 											function(err) { 
 											if (error) throw err;					
@@ -106,7 +106,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 							let member = message.member; // Get user ID
 							member.roles.add(AttendingRole).catch(console.error); // Assign Attending role to user
 							message.reply("Thank you for registering for GFM!"); // Let user know they have the Attending role
-							message.delete();
+							message.delete(); //delete user input to hide confirmation number
 							fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
 								function(err) { 
 									if (error) throw err;					
@@ -116,7 +116,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 					} else {		
 						console.log("Not a valid orderNumber"); // Write to terminal that the order number supplied is not valid
 						message.reply("Something is not quite right. Please check your confirmation number and try again."); // Replies to the user letting them know that the order number supplied is not valid	
-						message.delete();
+						message.delete(); //delete user input to hide confirmation number
 					};
 				});
 				
