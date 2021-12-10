@@ -16,7 +16,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 	
 	if (message.author.bot) return; // Ignores all messages sent by the bot
 
-	if (message.content.startsWith(!ping)) {
+	if (message.content.startsWith("!ping")) {
 		console.log("Alive check!");
 		message.reply("Pong!");
 	};
