@@ -89,7 +89,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 									});		
 									} else{ //confirm they are a Sponsor		
 										console.log("They're a Sponsor!"); // Confirm user is Sponsor to Console
-										let SponsorRole = message.guild.roles.cache.find.find(role => role.name === "2022 Sponsor");   // Get Sponsor Role ID                        
+										let SponsorRole = message.guild.roles.cache.find(role => role.name === "2022 Sponsor");   // Get Sponsor Role ID                        
 										let member = message.member; // Get user ID
 										member.roles.add(SponsorRole).catch(console.error); // Assign Sponsor role to user
 										message.reply("Thank you for registering as a Sponsor!"); // Let user know they have the Sponsor role
@@ -102,7 +102,7 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 									};
 						} else {		
 							console.log("They're attending!"); // Confirm user is Attending to Console
-							let AttendingRole = message.guild.roles.cache.find.find(role => role.name === "2022 Attending"); // Get Attending Role ID 
+							let AttendingRole = message.guild.roles.cache.find(role => role.name === "2022 Attending"); // Get Attending Role ID 
 							let member = message.member; // Get user ID
 							member.roles.add(AttendingRole).catch(console.error); // Assign Attending role to user
 							message.reply("Thank you for registering for GFM!"); // Let user know they have the Attending role
