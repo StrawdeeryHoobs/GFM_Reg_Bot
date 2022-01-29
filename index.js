@@ -72,56 +72,54 @@ client.on('messageCreate', message => { // Waits for a new message to be sent
 					request.write("")
 					request.end();					
 				})((error, statusCode, headers, body) => { //Response from WebConnex		
-				if (body.includes("GFM2022")) { //check for valid registration		
-					if (body.includes("Sponsor")) { //check for sponsor level                                  
-						console.log("They're a sponsor of some kind...");		
-							if (body.includes("SuperSponsor")){ // Confirm they are a SuperSponsor										
-								console.log("Theyre a SuperSponsor!"); // Confirm user is SuperSponsor to Console
-								let member = message.member; // Get user ID
-								let SuperSponsorRole = message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor"); // Get SuperSponsor Role ID
-								member.roles.add(SuperSponsorRole).catch(console.error); // Assign SuperSponsor role to user
-								message.reply("Thank you for registering as a SuperSponsor!"); // Let user know they have the SuperSponsor role
-								message.delete();
-								fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
-									function(err) { 
-									if (error) throw err;					
-										console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
-									});		
-									} else{ //confirm they are a Sponsor		
-										console.log("They're a Sponsor!"); // Confirm user is Sponsor to Console
-										let SponsorRole = message.guild.roles.cache.find(role => role.name === "2022 Sponsor");   // Get Sponsor Role ID                        
-										let member = message.member; // Get user ID
-										member.roles.add(SponsorRole).catch(console.error); // Assign Sponsor role to user
-										message.reply("Thank you for registering as a Sponsor!"); // Let user know they have the Sponsor role
-										message.delete(); //delete user input to hide confirmation number
-										fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
-											function(err) { 
-											if (error) throw err;					
-												console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
-											});
-									};
-						} else {		
-							console.log("They're attending!"); // Confirm user is Attending to Console
-							let AttendingRole = message.guild.roles.cache.find(role => role.name === "2022 Attending"); // Get Attending Role ID 
-							let member = message.member; // Get user ID
-							member.roles.add(AttendingRole).catch(console.error); // Assign Attending role to user
-							message.reply("Thank you for registering for GFM!"); // Let user know they have the Attending role
-							message.delete(); //delete user input to hide confirmation number
-							fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
-								function(err) { 
-									if (error) throw err;					
-									console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
-								});		
-							};
+				if (body.includes("GFM2022")) { //check for valid registration	
+					if (body.includes("\"label\": \"SuperSponsor\"")){ // Confirm they are a SuperSponsor										
+						console.log("Theyre a SuperSponsor!"); // Confirm user is SuperSponsor to Console
+						let member = message.member; // Get user ID
+						let SuperSponsorRole = message.guild.roles.cache.find(role => role.name === "2022 SuperSponsor"); // Get SuperSponsor Role ID
+						member.roles.add(SuperSponsorRole).catch(console.error); // Assign SuperSponsor role to user
+						message.reply("Thank you for registering as a SuperSponsor!"); // Let user know they have the SuperSponsor role
+						message.delete();
+						fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
+							function(err) { 
+							if (error) throw err;					
+								console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
+							});		
+					};	
+					if (body.includes("\"label\": \"Sponsor\"")) { //check for sponsor level 
+						console.log("They're a Sponsor!"); // Confirm user is Sponsor to Console
+						let SponsorRole = message.guild.roles.cache.find(role => role.name === "2022 Sponsor");   // Get Sponsor Role ID                        
+						let member = message.member; // Get user ID
+						member.roles.add(SponsorRole).catch(console.error); // Assign Sponsor role to user
+						message.reply("Thank you for registering as a Sponsor!"); // Let user know they have the Sponsor role
+						message.delete(); //delete user input to hide confirmation number
+						fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
+						function(err) { 
+							if (error) throw err;					
+								console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
+						});
+					};
+					if (body.includes("\"label\": \"Attending\"")) {		
+						console.log("They're attending!"); // Confirm user is Attending to Console
+						let AttendingRole = message.guild.roles.cache.find(role => role.name === "2022 Attending"); // Get Attending Role ID 
+						let member = message.member; // Get user ID
+						member.roles.add(AttendingRole).catch(console.error); // Assign Attending role to user
+						message.reply("Thank you for registering for GFM!"); // Let user know they have the Attending role
+						message.delete(); //delete user input to hide confirmation number
+						fsLibrary.appendFile('orderList.txt', orderNumber+"\n", 'utf8', // Append order number to orderList.txt so it cannot be used again
+							function(err) { 
+								if (error) throw err;					
+								console.log(orderNumber+" has been recorded.\n"); // Write to terminal that the order has been written
+							});							
 					} else {		
 						console.log("Not a valid orderNumber"); // Write to terminal that the order number supplied is not valid
 						message.reply("Something is not quite right. Please check your confirmation number and try again."); // Replies to the user letting them know that the order number supplied is not valid	
-						message.delete(); //delete user input to hide confirmation number
+						message.delete(); //delete user input to hide confirmation number					
 					};
-				});
-				
+				};
+				});	
 			};
-		});		
+		});
 	};
 });
 
